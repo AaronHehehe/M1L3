@@ -59,4 +59,10 @@ async def on_message(message):
     # Penting agar command tetap bekerja
     await bot.process_commands(message)
 
+@bot.event
+async def on_member_join(member):
+    # Mengirim pesan ucapan selamat
+    for channel in member.guild.text_channels:
+        await channel.send(f'Selamat datang, {member.mention}!')
+
 bot.run(token)  # Meluncurkan bot, menggunakan token untuk autentikasi
